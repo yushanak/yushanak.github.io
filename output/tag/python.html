@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+>
+<head>
+    <title>Python - YuShanAK</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+    <meta name="author" content="Shan" />
+    <meta name="keywords" content="Python" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="YuShanAK" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="YuShanAK"/>
+        <meta property="og:url" content="http://yushanak.github.io"/>
+        <meta property="og:description" content="YuShanAK"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://yushanak.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://yushanak.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://yushanak.github.io/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yushanak.github.io/theme/css/style.css" type="text/css"/>
+
+        <link href="http://yushanak.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="YuShanAK ATOM Feed"/>
+
+    <style>
+        #back-to-top {position: fixed;  bottom: 20%; left: 90%; }
+
+        #back-to-top a  { background-image: url(http://yushanak.github.io/theme/img/tops.png);  background-repeat: no-repeat;  background-position: -37px 0; display: block;height: 37px; width: 37px;}
+
+        #back-to-top a:hover  {background-position: 0 0;  }
+    </style>
+
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://yushanak.github.io/" class="navbar-brand">
+YuShanAK            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                        <li >
+                            <a href="http://yushanak.github.io/category/database.html">Database</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/qian-duan-ji-zhu.html">前端技术</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/tools.html">Tools</a>
+                        </li>
+                         <li><a href="http://yushanak.github.io/pages/about.html">
+                             About
+                          </a></li>
+                <li><a href="http://yushanak.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">文章归档</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+            <article>
+                <h2><a href="http://yushanak.github.io/python-oo-dev.html">OOP 学习笔记</a></h2>
+                <div class="summary"><h2>为何使用类：</h2>
+<p>使用类不仅仅是为了代码重用，它提供了描述现实世界问题结构和它们之间关系的非常有用的模型。包括两个方面：继承和组合。</p>
+<p>我们的知识很大一部分是建立在分类的层次结构之上：将现实世界按各种规则分门别类的分解剖析。掌握之后又通过各种需要组合起来，反过来进一步理解这个世界，产生我们的智慧。</p>
+<h3>具体到类</h3>
+<ul>
+<li>它是一种定义新种类的方式。</li>
+<li>从程序设计角度看，它又和函数和模块相似——是封装逻辑和数据的另一种方式。</li>
+<li>同时类也定义新的命名空间，这点和模块很像。</li>
+<li>它有和其它程序组成单元相比有三个显著的特点：<ul>
+<li>多重实例：类好比是有个模具，每次调用类都会建立一个有自己命名空间的新对象，这个对象能够读取类的属性，并有自己的命名空间来存储自己的数据。</li>
+<li>继承：通过继承机制，类建立命名空间的层次结构，可以在这个层次结构中重新定义类的属性从而扩展类。</li>
+<li>运算符重载：类通过特定的协议方法，可以定义对象来响应内置类型上的几种运算。</li>
+</ul>
+</li>
+</ul>
+<p>相比C++和Java，Python 的OOP得到了简化。在Python中大多数OOP都可以简化为一个表达式：object.attribute。
+当我们使用object.attribute这个表达式读取类的属性，调用对象的方法时，会产生一个动作——启动搜索对象连接树：从下到上，从左到右地搜索对象树，找到这个attribute首次出现的对象。</p>
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">也就是说，取出一个属性就是简单地搜索一颗“树”。这个搜索过程（机制 ...</span></pre></div>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/python-oo-dev.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://yushanak.github.io/django-migrantions.html">Django1.7 新增 Migrations 功能</a></h2>
+                <div class="summary"><p><em>本文是学习Django文档的一个概要，详细内容请阅读 <a href="https://docs.djangoproject.com/en/1.7/topics/migrations/">Django文档原文</a></em></p>
+<p>Django 1.7主要改进内容：</p>
+<ul>
+<li>一个新的内置数据库迁移系统</li>
+<li>Django 应用的一个重构概念</li>
+<li>改进了 Field API 模块，支持迁移，未来将会启用简单的组合键，支持 Django's ORM</li>
+<li>改进了可定制的 Manager 和 QuerySet 类</li>
+<li>一个可扩展的系统检测框架</li>
+</ul>
+<p>更多内容请看发行说明。</p>
+<hr />
+<h2>简介</h2>
+<p>在Django 1.7 以前，Django 只支持添加新模型到数据库。syncdb命令（migrate命令的前身）不提供删除或更改现有的数据库结构的功能。</p>
+<p>从 Django 1.7 开始，Django 将提供一种在你修改你的数据库结构（添加字段或删除表等）后进行数据库迁移的方法，它们大多设计成自动运行，但是你需要知道该什么时候迁移,在什么时候运行它们,以及运行中你可能遇到的常见问题。</p>
+<h2>工具 ...</h2>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/django-migrantions.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://yushanak.github.io/pelican-blog.html">我的博客正式在 GitHub 安家</a></h2>
+                <div class="summary"><h3>醒悟</h3>
+<hr />
+<h3>Geek是什么</h3>
+<p>Geek更多的是一种精神，一种态度，一种对技术的理解与信念。他们无法忍受丑陋的代码，拙劣的技术。他们思路开阔，技术娴熟，他们不甘平庸，追求完美。他们不会囿于常识，他们敢于突破。在常人眼中，他们不走寻常路，享受各种非主流的技术。但在他们自己眼中，这些又是那么得自然与优美。他们用自己的行为诠释着自己对于技术的理解，用那份固执传达着自己的信念。</p>
+<p>他们掌握并热爱着技术，叛逆、执着，崇尚自由。</p>
+<h3>为什么不选择CSDN、Wordpress、Jekyll等技术</h3>
+<p>CSDN上发表博文虽然方便，但没有归属感，自己的博客还是应该自己做主。</p>
+<p>Wordpress上手容易、功能强大、插件丰富。但是在我看来，这些优点同时也是它的缺点：太笨重、太无脑、不够酷、无用功能太多、可定制的粒度不够小。我更喜欢简洁快速粗暴的博客系统。</p>
+<p>Jekyll非常棒，可惜它基于Ruby。对于Python爱好者而言，基于Python的Pelican显然更加可口。</p>
+<h3>探寻</h3>
+<hr />
+<p>我在搭建这个博客的过程中学到了很多很多有意思的技术。</p>
+<p>搭建环境为 Linux，Windows下可能会麻烦一些 ...</p>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/pelican-blog.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://yushanak.github.io/Jinjia2-how-to-1.html">Jinja2 笔记（一）</a></h2>
+                <div class="summary"><p>Jinjin2 通用模板语言，类似于 Django 的模板，但更加灵活和快速。Jinja2 需要至少 Python 2.4 版本来运行。</p>
+<h3>Jinjia2 模板引擎中的语法和语义结构</h3>
+<p>模板仅仅是文本文件。它可以生成任何基于文本的格式（HTML、XML、CSV、LaTex 等等）。 它并没有特定的扩展名， .html 或 .xml 都可以。
+模板包括：<strong>变量</strong>、 <strong>表达式</strong> 和 <strong>tags</strong>。语法灵感主要来自于 Django 和 Python 。{% %}用来执行语句， {{ }}用来返回一个变量的值。</p>
+<h3>变量</h3>
+<p>变量是由你的 app 传递进模板来的。它可能有属性或者元素，这完全取决于你传递进来的是什么类型的变量。</p>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/Jinjia2-how-to-1.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">足迹</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/yushanak"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                    <li class="list-group-item"><a href="http://www.douban.com/people/YuShanAK/"><i class="fa fa-豆瓣-square fa-lg"></i> 豆瓣</a></li>
+                    <li class="list-group-item"><a href="http://www.zhihu.com/people/shan-yu-65"><i class="fa fa-知乎-square fa-lg"></i> 知乎</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="http://yushanak.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">标签云</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://yushanak.github.io/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://yushanak.github.io/tag/pelican.html">
+                                pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://yushanak.github.io/tag/markdown.html">
+                                Markdown
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/github.html">
+                                github
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/resource.html">
+                                resource
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/oop.html">
+                                OOP
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/jinjia2.html">
+                                Jinjia2
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/postgresql.html">
+                                postgresql
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/html.html">
+                                Html
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">参考</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://docs.getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://docs.python.org/2.7/" target="_blank">
+                Python
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docs.jinkan.org/docs/jinja2/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://www.google.com/ncr" target="_blank">
+                Google
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+
+<p id="back-to-top" ><a  title=""></a></p>
+
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Shan
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+      </div>
+   </div>
+</footer>
+<script src="http://yushanak.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://yushanak.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://yushanak.github.io/theme/js/respond.min.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(function () {$("#back-to-top").hide(); $(function () {$(window).scroll(function () {if ($(window).scrollTop() > 500) {$("#back-to-top").fadeIn();}else {$("#back-to-top").fadeOut();}});$("#back-to-top").click(function () {$('body,html').animate({scrollTop: 0}, 500);return false;});});});
+</script>
+
+</body>
+</html>
