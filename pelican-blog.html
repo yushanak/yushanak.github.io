@@ -190,9 +190,10 @@ YuShanAK            </a>
 </pre></div>
 
 
-<p>进入output把自己刚刚建好的username.github.io版本库clone下来：</p>
-<div class="highlight"><pre><span class="n">cd</span> <span class="n">output</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="n">username</span><span class="o">/</span><span class="n">username</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span>
+<p>把自己刚刚建好的username.github.io版本库clone下来：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="n">username</span><span class="o">/</span><span class="n">username</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span>
 </pre></div>
 
 
@@ -204,16 +205,7 @@ YuShanAK            </a>
 </pre></div>
 
 
-<p>若要一键上传到Github，需要修改Makefile两处地方：</p>
-<div class="highlight"><pre><span class="nl">publish:</span>
-<span class="err">$</span><span class="p">(</span><span class="n">PELICAN</span><span class="p">)</span> <span class="err">$</span><span class="p">(</span><span class="n">INPUTDIR</span><span class="p">)</span> <span class="o">-</span><span class="n">o</span> <span class="err">$</span><span class="p">(</span><span class="n">OUTPUTDIR</span><span class="p">)</span> <span class="o">-</span><span class="n">s</span> <span class="err">$</span><span class="p">(</span><span class="n">PUBLISHCONF</span><span class="p">)</span> <span class="err">$</span><span class="p">(</span><span class="n">PELICANOPTS</span><span class="p">)</span>
-
-<span class="nl">github:</span> <span class="n">publish</span>
-<span class="n">cd</span> <span class="n">OUTPUTDIR</span> <span class="p">;</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span> <span class="p">;</span>  <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="err">&#39;</span><span class="n">your</span> <span class="n">comments</span><span class="err">&#39;</span> <span class="p">;</span> <span class="n">git</span> <span class="n">push</span>
-</pre></div>
-
-
-<p>以后写完文章执行make github就可以一键部署了。</p>
+<p>若要一键上传到Github，执行 <code>make github</code> 就可以一键部署：</p>
 <h3>添翼</h3>
 <hr />
 <p>我们已经能成功地用markdown写出博文并部署到github了，但这远远不够。</p>
@@ -223,12 +215,12 @@ YuShanAK            </a>
 <p>安装主题，比如bootstrap2：</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/getpelican/pelican-themes.git</span>
 <span class="n">cd</span> <span class="n">pelican</span><span class="o">-</span><span class="n">themes</span>
-<span class="n">pelican</span><span class="o">-</span><span class="n">themes</span> <span class="o">-</span><span class="n">i</span> <span class="n">bootstrap2</span>
+<span class="n">pelican</span><span class="o">-</span><span class="n">themes</span> <span class="o">-</span><span class="n">i</span>  <span class="n">pelican</span><span class="o">-</span><span class="n">bootstrap3</span>
 </pre></div>
 
 
 <p>选择主题，在pelicanconf.py中添加</p>
-<div class="highlight"><pre><span class="n">THEME</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">bootstrap2</span><span class="err">&#39;</span>
+<div class="highlight"><pre><span class="n">THEME</span> <span class="o">=</span> <span class="err">&#39;</span> <span class="n">pelican</span><span class="o">-</span><span class="n">bootstrap3</span><span class="err">&#39;</span>
 </pre></div>
 
 
@@ -361,28 +353,13 @@ YuShanAK            </a>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://yushanak.github.io/tag/django.html">
-                                Django
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
                             <a href="http://yushanak.github.io/tag/github.html">
                                 github
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://yushanak.github.io/tag/oop.html">
-                                OOP
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://yushanak.github.io/tag/jinjia2.html">
-                                Jinjia2
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://yushanak.github.io/tag/postgresql.html">
-                                postgresql
+                            <a href="http://yushanak.github.io/tag/resource.html">
+                                resource
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -391,8 +368,23 @@ YuShanAK            </a>
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
-                            <a href="http://yushanak.github.io/tag/resource.html">
-                                resource
+                            <a href="http://yushanak.github.io/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/jinjia2.html">
+                                Jinjia2
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/oop.html">
+                                OOP
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/postgresql.html">
+                                postgresql
                             </a>
                         </li>
                     </ul>
