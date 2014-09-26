@@ -99,7 +99,7 @@
 &lt;h3&gt;管理图片&lt;/h3&gt;
 &lt;p&gt;我觉得使用云相册比本地图片要方便的多，我使用&lt;a href="https://picasaweb.google.com?noredirect=1"&gt;Picasa&lt;/a&gt;来维护blog的所有图片。&lt;a href="http://photo.163.com/"&gt;微博相册&lt;/a&gt;也是一个不错的选择。&lt;/p&gt;
 &lt;h3&gt;挑选主题&lt;/h3&gt;
-&lt;p&gt;安装主题，比如bootstrap2：&lt;/p&gt;
+&lt;p&gt;安装主题，比如 pelican-bootstrap3：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-themes.git&lt;/span&gt;
 &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;
 &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;  &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bootstrap3&lt;/span&gt;
