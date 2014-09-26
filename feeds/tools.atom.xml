@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>廋虎</title><link href="http://yushanak.github.io/" rel="alternate"></link><link href="http://yushanak.github.io/feeds/tools.atom.xml" rel="self"></link><id>http://yushanak.github.io/</id><updated>2014-08-17T00:00:00+08:00</updated><entry><title>我的博客正式在 GitHub 安家</title><link href="http://yushanak.github.io/pelican-blog.html" rel="alternate"></link><updated>2014-08-17T00:00:00+08:00</updated><author><name>Shan</name></author><id>tag:yushanak.github.io,2014-08-17:pelican-blog.html</id><summary type="html">&lt;h3&gt;醒悟&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;h3&gt;Geek是什么&lt;/h3&gt;
+&lt;p&gt;Geek更多的是一种精神，一种态度，一种对技术的理解与信念。他们无法忍受丑陋的代码，拙劣的技术。他们思路开阔，技术娴熟，他们不甘平庸，追求完美。他们不会囿于常识，他们敢于突破。在常人眼中，他们不走寻常路，享受各种非主流的技术。但在他们自己眼中，这些又是那么得自然与优美。他们用自己的行为诠释着自己对于技术的理解，用那份固执传达着自己的信念。&lt;/p&gt;
+&lt;p&gt;他们掌握并热爱着技术，叛逆、执着，崇尚自由。&lt;/p&gt;
+&lt;h3&gt;为什么不选择CSDN、Wordpress、Jekyll等技术&lt;/h3&gt;
+&lt;p&gt;CSDN上发表博文虽然方便，但没有归属感，自己的博客还是应该自己做主。&lt;/p&gt;
+&lt;p&gt;Wordpress上手容易、功能强大、插件丰富。但是在我看来，这些优点同时也是它的缺点：太笨重、太无脑、不够酷、无用功能太多、可定制的粒度不够小。我更喜欢简洁快速粗暴的博客系统。&lt;/p&gt;
+&lt;p&gt;Jekyll非常棒，可惜它基于Ruby。对于Python爱好者而言，基于Python的Pelican显然更加可口。&lt;/p&gt;
+&lt;h3&gt;探寻&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;我在搭建这个博客的过程中学到了很多很多有意思的技术。&lt;/p&gt;
+&lt;p&gt;搭建环境为 Linux，Windows下可能会麻烦一些。&lt;/p&gt;
+&lt;p&gt;搭建过程中会涉及到的技术名词如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux&lt;/li&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;Pip&lt;/li&gt;
+&lt;li&gt;Pelican&lt;/li&gt;
+&lt;li&gt;Jinja2&lt;/li&gt;
+&lt;li&gt;Github &lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;li&gt;Markdown&lt;/li&gt;
+&lt;li&gt;Mou&lt;/li&gt;
+&lt;li&gt;Google Analytics&lt;/li&gt;
+&lt;li&gt;Google Custom Search&lt;/li&gt;
+&lt;li&gt;Google Webmasters&lt;/li&gt;
+&lt;li&gt;Picasa&lt;/li&gt;
+&lt;li&gt;Disqus&lt;/li&gt;
+&lt;li&gt;Rss&lt;/li&gt;
+&lt;li&gt;Sitemap&lt;/li&gt;
+&lt;li&gt;Godaddy&lt;/li&gt;
+&lt;li&gt;Dnspod&lt;/li&gt;
+&lt;li&gt;A记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;若对任何一个技术名词有疑问，请翻墙&lt;a href="https://www.google.com/ncr"&gt;Google&lt;/a&gt; it.&lt;/p&gt;
+&lt;h3&gt;初见&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;开始动手。&lt;/p&gt;
+&lt;h3&gt;Github入门指南&lt;/h3&gt;
+&lt;p&gt;There are two types of GitHub Pages: Project Pages and User Pages. GitHub Pages 提供一种简洁高效的发布Pelican页面的方法。两者都支持Pelican页面发布。
+请参考&lt;a href="http://blog.csdn.net/duxinfeng2010/article/details/8654690"&gt;http://blog.csdn.net/duxinfeng2010/article/details/8654690&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;使用Github Pages创建个人博客&lt;/h3&gt;
+&lt;p&gt;Github为每一个用户分配了一个二级域名username.github.io，用户为自己的二级域名创建主页很简单，只需要在Github下创建一个名为username.github.io的版本库，并向其master分支提交网站静态页面即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆Github，创建一个名为username.github.io的版本库（将username替换成自己的Github账户名）。&lt;/li&gt;
+&lt;li&gt;点击Setting，选择一个自己喜欢的模板，最后点击发布public按钮。&lt;/li&gt;
+&lt;li&gt;耐心等待一段时间（不超过10分钟），登陆http://username.github.io，会发现自己的个人博客已经生成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;安装Pelican、Markdown、ghp-import&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;markdown&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;import&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;搭建骨架&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt;
+&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;根据提示一步步输入相应的配置项，不知道如何设置的接受默认即可，后续可以通过编辑pelicanconf.py文件更改配置)&lt;/p&gt;
+&lt;p&gt;以下是生成的目录结构：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;              &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放输入的源文件&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;          &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;存放手工创建的静态页面&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;               &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;生成的输出文件&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便开启测试服务器&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;Makefile&lt;/span&gt;             &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;方便管理博客的&lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主配置文件&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;主发布文件，可删除&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;进入output把自己刚刚建好的username.github.io版本库clone下来：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;开始写博文&lt;/h3&gt;
+&lt;p&gt;在content目录下用Markdown语法来写一篇文章，最好选择专业的Markdown编辑器，喜欢哪一种请Google。&lt;/p&gt;
+&lt;p&gt;写完后，执行以下命令，即可在本机&lt;a href="http://127.0.0.1:8000"&gt;http://127.0.0.1:8000&lt;/a&gt;看到效果。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;
+&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;serve&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;若要一键上传到Github，需要修改Makefile两处地方：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;publish:&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;INPUTDIR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUTDIR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PUBLISHCONF&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICANOPTS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nl"&gt;github:&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;OUTPUTDIR&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;am&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;comments&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以后写完文章执行make github就可以一键部署了。&lt;/p&gt;
+&lt;h3&gt;添翼&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;我们已经能成功地用markdown写出博文并部署到github了，但这远远不够。&lt;/p&gt;
+&lt;h3&gt;管理图片&lt;/h3&gt;
+&lt;p&gt;我觉得使用云相册比本地图片要方便的多，我使用&lt;a href="https://picasaweb.google.com?noredirect=1"&gt;Picasa&lt;/a&gt;来维护blog的所有图片。&lt;a href="http://photo.163.com/"&gt;微博相册&lt;/a&gt;也是一个不错的选择。&lt;/p&gt;
+&lt;h3&gt;挑选主题&lt;/h3&gt;
+&lt;p&gt;安装主题，比如bootstrap2：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-themes.git&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;
+&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;bootstrap2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;选择主题，在pelicanconf.py中添加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;bootstrap2&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;安装第三方评论系统&lt;/h3&gt;
+&lt;p&gt;在&lt;a href="https://disqus.com/admin/signup"&gt;Disqus&lt;/a&gt;上申请一个站点，记牢Shortname。
+在pelicanconf.py添加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Shortname&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;添加Google Analytics&lt;/h3&gt;
+&lt;p&gt;去&lt;a href="http://www.google.com/analytics"&gt;Google Analytics&lt;/a&gt;申请账号，记下跟踪ID。
+在pelicanconf.py添加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;GOOGLE_ANALYTICS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;跟踪&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Google Analytics极其强悍，截图说明一切：
+&lt;img alt="2" src="https://lh6.googleusercontent.com/-9vXmIT6vXDo/Ug5wTSu4wMI/AAAAAAAAALM/5-VSrnXNGUU/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-17+%25E4%25B8%258A%25E5%258D%25882.31.26.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="3" src="https://lh6.googleusercontent.com/-a4ZAnTD7F0I/Ug5wTX0w9nI/AAAAAAAAALI/x9J0atK3lpU/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-17+%25E4%25B8%258A%25E5%258D%25882.31.54.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;使用Google Webmasters&lt;/h3&gt;
+&lt;p&gt;在&lt;a href="http://www.google.com/webmasters"&gt;Google Webmasters&lt;/a&gt;上注册即可。&lt;/p&gt;
+&lt;p&gt;这个就是Google站长工具，使用它的目的是为了让博客被Google更好的收录，比如手动让Googlebot抓取、提交Robots、更新Sitemap等等，各方面完爆百度站长工具。&lt;/p&gt;
+&lt;p&gt;截图如下：
+&lt;img alt="3" src="https://lh3.googleusercontent.com/-tYrEbXyx_5o/UhGS1C_lcYI/AAAAAAAAALk/H7X7MBjNkVY/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-19+%25E4%25B8%258A%25E5%258D%258811.36.32.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;添加插件&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-plugins.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;比如我要使用sitemap，在pelicanconf.py里配置如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;PLUGIN_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pelican-plugins&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sitemap&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;SITEMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;format&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;priorities&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;articles&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;indexes&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;pages&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;changefreqs&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;articles&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;monthly&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;indexes&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;daily&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;pages&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;monthly&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;使用Google站内搜索&lt;/h3&gt;
+&lt;p&gt;请参考&lt;a href="http://www.codenut.net/post/2013-06-30-cse"&gt;http://www.codenut.net/post/2013-06-30-cse&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;申请独立域名&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在&lt;a href="https://www.godaddy.com"&gt;Godaddy&lt;/a&gt;上用支付宝花购买为期一年的顶级域名，并去修改Nameservers为这两个地址：f1g1ns1.dnspod.net、f1g1ns2.dnspod.net。&lt;/li&gt;
+&lt;li&gt;在&lt;a href="https://www.dnspod.cn"&gt;Dnspod&lt;/a&gt;上添加新域名，并申请一条A记录指向Github Pages的ip:207.97.227.245；&lt;/li&gt;
+&lt;li&gt;在Pelican主目录新建CNAME文件，添上刚刚申请的域名，如我的www.lizherui.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;登峰&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;最后，如果感觉还不够味儿，可以参考Pelican官方文档、研究源代码和设计自己的博客主题。&lt;/p&gt;
+&lt;p&gt;Pelican : &lt;a href="http://docs.getpelican.com/en/3.4"&gt;http://docs.getpelican.com/en/3.4&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;makefile 进阶&lt;/h3&gt;
+&lt;p&gt;熟悉几个参数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;make html 这个是生成你的静态博客站点，你可以在本地预览你的静态博客。它使用 pelicanconf.py 配置文件来生成站点。&lt;/li&gt;
+&lt;li&gt;make publish 这个是生成准备发布的静态博客站点，会加入你网站的 URL。它使用 publishconf.py 配置文件来生成站点。&lt;/li&gt;
+&lt;li&gt;make serve 建立一个开发服务器提供本地的预览，在windows环境使用 Python3X 的，要注意makefile文件开头的 PY?=python3 的设置，将它改过来：PY?=python 否则会报错。因为windows环境没有 python3 这个命令。&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/davisp/ghp-import"&gt;ghp-import&lt;/a&gt; 工具：使用 pip 安装。Pelican默认使用这个工具，它可以帮助你简化更新 GitHub Page。&lt;/li&gt;
+&lt;li&gt;make regenerate 它可以自动实时更新你的文章输出。使用时，它在后台监控你的 input 文件夹，你修改完并文章保存后，它自动重新生成你的博客到输出目录。这样你就不需要每次改完文章后再去手动输入命令生成。&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="pelican"></category><category term="python"></category><category term="github"></category></entry><entry><title>设计你自己的 Pelican 主题</title><link href="http://yushanak.github.io/create-themes-for-Pelican.html" rel="alternate"></link><updated>2014-03-07T10:30:00+08:00</updated><author><name>Shan</name></author><id>tag:yushanak.github.io,2014-03-07:create-themes-for-Pelican.html</id><summary type="html">&lt;p&gt;pelican 使用 jinja2 模板引擎来提供博客主题的渲染和输出 html，jinja2 的语法很简单。如果你想创建自己的主题模板，先从简单的默认主题获取灵感吧。&lt;/p&gt;
+&lt;h2&gt;项目结构&lt;/h2&gt;
+&lt;p&gt;一个主题项目必须包括下面的目录结构：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt;
+    &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;css&lt;/span&gt;
+    &lt;span class="err"&gt;│&lt;/span&gt;   &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt;
+    &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;templates&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;archives&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;         &lt;span class="c1"&gt;// to display archives&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;period_archives&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;  &lt;span class="c1"&gt;// to display time-period archives&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;          &lt;span class="c1"&gt;// processed for each article&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;           &lt;span class="c1"&gt;// processed for each author&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;authors&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;          &lt;span class="c1"&gt;// must list all the authors&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;categories&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;       &lt;span class="c1"&gt;// must list all the categories&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;         &lt;span class="c1"&gt;// processed for each category&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;            &lt;span class="c1"&gt;// the index. List all the articles&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;             &lt;span class="c1"&gt;// processed for each page&lt;/span&gt;
+        &lt;span class="err"&gt;├──&lt;/span&gt; &lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;              &lt;span class="c1"&gt;// processed for each tag&lt;/span&gt;
+        &lt;span class="err"&gt;└──&lt;/span&gt; &lt;span class="n"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;             &lt;span class="c1"&gt;// must list all the tags. Can be a tag cloud.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;static 是静态文件目录，目录里的文件将会被复制到 output 目录中的 theme 目录。
+templates 目录包括所有用来生成输出的模板，上面列出的是必须有的模板，你可以添加你自己的模板来丰富你的主题。&lt;/p&gt;
+&lt;h2&gt;模板和变量&lt;/h2&gt;
+&lt;p&gt;所有的模板都接收你在 settings 文件中定义的变量。你定义的变量必须全部采用大写，然后你就可以直接在模板中使用它们。&lt;/p&gt;
+&lt;h3&gt;通用变量&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;变量&lt;/th&gt;
+&lt;th align="left"&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;output_file&lt;/td&gt;
+&lt;td align="left"&gt;渲染出来的 html 文件名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;articles&lt;/td&gt;
+&lt;td align="left"&gt;文章列表，按照时间降序排序，所有的元素都是 article 对象，所以你可以获取它的属性值（比如 Tag，Summary等等）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;dates&lt;/td&gt;
+&lt;td align="left"&gt;日期&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;tags&lt;/td&gt;
+&lt;td align="left"&gt;(tag, articles)元组列表，包括所有的 tags&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;categories&lt;/td&gt;
+&lt;td align="left"&gt;(category, articles)元组列表, 包括所有的分类和对应的文章 (值)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;pages&lt;/td&gt;
+&lt;td align="left"&gt;页面列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;排序&lt;/h3&gt;
+&lt;h3&gt;时间格式&lt;/h3&gt;
+&lt;p&gt;Pelican 通过你的设置和本地时区来格式化时间格式（通过 DATE_FORMATS/DEFAULT_DATE_FORMAT 变量） 。并提供 locale_date 属性。 date 属性是一个 datetime 对象。 如果你需要自定义一个不同于你设置的格式，你可以使用 Jinja2 的过滤器 strftime ，它将正确地使用本地设置格式化时间。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; %B %Y&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;index.html&lt;/h3&gt;
+&lt;p&gt;这是你的 blog 首页。生成为 output 目录的 index.html 文件。如果分页被设置，后续的页面将为 /index&lt;code&gt;n&lt;/code&gt;.html。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;变量&lt;/th&gt;
+&lt;th align="left"&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;articles_paginator&lt;/td&gt;
+&lt;td align="left"&gt;A paginator object for the list of articles&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;articles_page&lt;/td&gt;
+&lt;td align="left"&gt;The current page of articles&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;dates_paginator&lt;/td&gt;
+&lt;td align="left"&gt;A paginator object for the article list, ordered by date, ascending.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;dates_page&lt;/td&gt;
+&lt;td align="left"&gt;The current page of articles, ordered by date, ascending.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;page_name&lt;/td&gt;
+&lt;td align="left"&gt;‘index’ – useful for pagination links&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;author.html&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;变量&lt;/th&gt;
+&lt;th align="left"&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;author&lt;/td&gt;
+&lt;td align="left"&gt;The name of the author being processed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;articles&lt;/td&gt;
+&lt;td align="left"&gt;Articles by this author&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;dates&lt;/td&gt;
+&lt;td align="left"&gt;Articles by this author, but ordered by date, ascending&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;articles_paginator&lt;/td&gt;
+&lt;td align="left"&gt;A paginator object for the list of articles&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;articles_page&lt;/td&gt;
+&lt;td align="left"&gt;The current page of articles&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;dates_paginator&lt;/td&gt;
+&lt;td align="left"&gt;A paginator object for the article list, ordered by date, ascending.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;dates_page&lt;/td&gt;
+&lt;td align="left"&gt;The current page of articles, ordered by date, ascending.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;page_name&lt;/td&gt;
+&lt;td align="left" slug="slug"&gt;AUTHOR_URL where everything after &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Feeds&lt;/h3&gt;
+&lt;p&gt;feed 变量明确区分 ATOM 和 RSS 。ATOM 是默认。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;FEED_ATOM&lt;/span&gt;
+&lt;span class="n"&gt;FEED_RSS&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_ATOM&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_RSS&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt;
+&lt;span class="n"&gt;TAG_FEED_ATOM&lt;/span&gt;
+&lt;span class="n"&gt;TAG_FEED_RSS&lt;/span&gt;
+&lt;span class="n"&gt;TRANSLATION_FEED_ATOM&lt;/span&gt;
+&lt;span class="n"&gt;TRANSLATION_FEED_RSS&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="pelican"></category></entry><entry><title>【网摘】Markdown 语法说明 (简体中文版)</title><link href="http://yushanak.github.io/markdown-syntax.html" rel="alternate"></link><updated>2014-03-07T10:30:00+08:00</updated><author><name>Shan</name></author><id>tag:yushanak.github.io,2014-03-07:markdown-syntax.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#overview"&gt;概述&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#philosophy"&gt;哲学&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#html"&gt;行内 HTML&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#autoescape"&gt;特殊字符自动转换&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#block"&gt;区块元素&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#p"&gt;段落和换行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#header"&gt;标题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#blockquote"&gt;区块引言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#list"&gt;列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#precode"&gt;程序代码区块&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#hr"&gt;分隔线&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#span"&gt;区段元素&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#link"&gt;链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#em"&gt;强调&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#code"&gt;程序代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#img"&gt;图片&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#misc"&gt;其它&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#backslash"&gt;转义字符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#autolink"&gt;自动链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#acknowledgement"&gt;感谢&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;这份文档来自网络，是我目前找到的比较好的关于Markdown 语法的文档。这份文档同时也是用 Markdown 写的，你可以看看附件中的原始文档 。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="overview"&gt;概述&lt;/h2&gt;
+
+&lt;h3 id="philosophy"&gt;哲学&lt;/h3&gt;
+
+&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
+&lt;p&gt;不过最需要强调的便是它的可读性。一份使用 Markdown 格式撰写的文档应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 &lt;a href="http://docutils.sourceforge.net/mirror/setext.html"&gt;Setext&lt;/a&gt;、&lt;a href="http://www.aaronsw.com/2002/atx/"&gt;atx&lt;/a&gt;、&lt;a href="http://textism.com/tools/textile/"&gt;Textile&lt;/a&gt;、&lt;a href="http://docutils.sourceforge.net/rst.html"&gt;reStructuredText&lt;/a&gt;、&lt;a href="http://www.triptico.com/software/grutatxt.html"&gt;Grutatext&lt;/a&gt; 和 &lt;a href="http://ettext.taint.org/doc/"&gt;EtText&lt;/a&gt;，然而最大灵感来源其实是纯文本的电子邮件格式。&lt;/p&gt;
+&lt;p&gt;因此 Markdown 的语法全由标点符号所组成，并经过严谨慎选，是为了让它们看起来就像所要表达的意思。像是在文字两旁加上星号，看起来就像*强调*。Markdown 的列表看起来，嗯，就是列表。假如你用过电子邮件，区块引言看起来就真的像是引用一段文字。&lt;/p&gt;
+&lt;h3 id="html"&gt;行内 HTML&lt;/h3&gt;
+
+&lt;p&gt;Markdown 的语法有个主要的目的：用来作为一种网络内容的&lt;em&gt;写作&lt;/em&gt;用语言。&lt;/p&gt;
+&lt;p&gt;Markdown 不是要来取代 HTML，甚至也没有要和它相似，它的语法种类不多，只和 HTML 的一部分有关系，重点&lt;strong&gt;不是&lt;/strong&gt;要创造一种更容易写作 HTML 文档的语法，我认为 HTML 已经很容易写了，Markdown 的重点在于，它能让文档更容易阅读、编写。HTML 是一种&lt;em&gt;发布&lt;/em&gt;的格式，Markdown 是一种&lt;em&gt;编写&lt;/em&gt;的格式，因此，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。&lt;/p&gt;
+&lt;p&gt;不在 Markdown 涵盖范围之外的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。&lt;/p&gt;
+&lt;p&gt;只有区块元素──比如 &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 等标签，必需在前后加上空白，以利与内容区隔。而且这些（元素）的开始与结尾标签，不可以用 tab 或是空白来缩排。Markdown 的产生器有智能判断，可以避免在区块标签前后加上没有必要的 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
+&lt;p&gt;举例来说，在 Markdown 文档里加上一段 HTML 表格：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;This&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="nx"&gt;regular&lt;/span&gt; &lt;span class="nx"&gt;paragraph.&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;table&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nb"&gt;Foo&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;td&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;table&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="nx"&gt;This&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nx"&gt;another&lt;/span&gt; &lt;span class="nx"&gt;regular&lt;/span&gt; &lt;span class="nx"&gt;paragraph.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;请注意，Markdown 语法在 HTML 区块标签中将不会被进行处理。例如，无法在 HTML 区块内使用 Markdown 形式的&lt;code&gt;*强调*&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;HTML 的区段标签如 &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;cite&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;del&amp;gt;&lt;/code&gt; 则不受限制，可以在 Markdown 的段落、列表或是标题里任意使用。依照个人习惯，甚至可以不用Markdown 格式，而采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的  &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; 或 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图片标示语法。&lt;/p&gt;
+&lt;p&gt;HTML 区段标签和区块标签不同，在区段标签的范围内， Markdown 的语法是有效的。&lt;/p&gt;
+&lt;h3 id="autoescape"&gt;特殊字符自动转换&lt;/h3&gt;
+
+&lt;p&gt;在 HTML 文档中，有两个字符需要特殊处理： &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;&lt;/code&gt; 。 &lt;code&gt;&amp;lt;&lt;/code&gt; 符号用于起始标签，&lt;code&gt;&amp;amp;&lt;/code&gt; 符号则用于标记 HTML 实体，如果只是想要使用这些符号，必须要使用实体的形式，像是 &lt;code&gt;&amp;amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;amp;&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;amp;&lt;/code&gt; 符号其实很让写作网络文档的人很困扰，如果要输入「AT&amp;amp;T」 ，必须要写成「&lt;code&gt;AT&amp;amp;amp;T&lt;/code&gt;」 ，还得转换网址内的 &lt;code&gt;&amp;amp;&lt;/code&gt; 符号，如果要链接到：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;http:&lt;/span&gt;&lt;span class="c1"&gt;//images.google.com/images?num=30&amp;amp;q=larry+bird&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;必须要把网址转成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;http:&lt;/span&gt;&lt;span class="c1"&gt;//images.google.com/images?num=30&amp;amp;amp;q=larry+bird&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;才能放到链接标签的 &lt;code&gt;href&lt;/code&gt; 属性里。不用说也知道这很容易忘记，这也可能是 HTML 标准检查所检查到的错误中，数量最多的。&lt;/p&gt;
+&lt;p&gt;Markdown 允许直接使用这些符号，但是要小心转义字符的使用，如果是在HTML 实体中使用 &lt;code&gt;&amp;amp;&lt;/code&gt; 符号的话，它不会被转换，而在其它情形下，它则会被转换成 &lt;code&gt;&amp;amp;amp;&lt;/code&gt;。所以如果要在文档中插入一个著作权的符号，可以这样写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 将不会对这段文字做修改，但是如果这样写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AT&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 就会将它转为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AT&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;类似的状况也会发生在 &lt;code&gt;&amp;lt;&lt;/code&gt; 符号上，因为 Markdown 支持 &lt;a href="#html"&gt;行内 HTML&lt;/a&gt; ，如果是使用 &lt;code&gt;&amp;lt;&lt;/code&gt; 符号作为 HTML 标签使用，那 Markdown 也不会对它做任何转换，但是如果是写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 将会把它转换为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;不过需要注意的是，code 范围内，不论是行内还是区块， &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;&lt;/code&gt; 两个符号都&lt;em&gt;一定&lt;/em&gt;会被转换成 HTML 实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML 语法中，要把所有的 &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;amp;&lt;/code&gt; 都转换为 HTML 实体，才能在 HTML 文档里面写出 HTML code。）&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="block"&gt;区块元素&lt;/h2&gt;
+
+&lt;h3 id="p"&gt;段落和换行&lt;/h3&gt;
+
+&lt;p&gt;一个段落是由一个以上相连接的行句组成，而一个以上的空行则会切分出不同的段落（空行的定义是显示上看起来像是空行，便会被视为空行。比方说，若某一行只包含空白和 tab，则该行也会被视为空行），一般的段落不需要用空白或断行缩排。&lt;/p&gt;
+&lt;p&gt;「一个以上相连接的行句组成」这句话其实暗示了 Markdown 允许段落内的强迫断行，这个特性和其他大部分的 text-to-HTML 格式不一样（包括 MovableType 的「Convert Line Breaks」选项），其它的格式会把每个断行都转成 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
+&lt;p&gt;如果&lt;em&gt;真的&lt;/em&gt;想要插入 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt; 标签，在行尾加上两个以上的空白，然后按 enter。&lt;/p&gt;
+&lt;p&gt;是的，这确实需要花比较多功夫来插入 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt; ，但是「每个换行都转换为 &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;」的方法在 Markdown 中并不适合， Markdown 中 email 式的 &lt;a href="#blockquote"&gt;区块引言&lt;/a&gt; 和多段落的 &lt;a href="#list"&gt;列表&lt;/a&gt; 在使用换行来排版的时候，不但更好用，还更好阅读。&lt;/p&gt;
+&lt;h3 id="header"&gt;标题&lt;/h3&gt;
+
+&lt;p&gt;Markdown 支持两种标题的语法，&lt;a href="http://docutils.sourceforge.net/mirror/setext.html"&gt;Setext&lt;/a&gt; 和 &lt;a href="http://www.aaronsw.com/2002/atx/"&gt;atx&lt;/a&gt; 形式。&lt;/p&gt;
+&lt;p&gt;Setext 形式是用底线的形式，利用 &lt;code&gt;=&lt;/code&gt; （一级标题）和 &lt;code&gt;-&lt;/code&gt; （二级标题），例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gh"&gt;This is an H1&lt;/span&gt;
+&lt;span class="gh"&gt;=============&lt;/span&gt;
+
+&lt;span class="gh"&gt;This is an H2&lt;/span&gt;
+&lt;span class="gh"&gt;-------------&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;任何数量的 &lt;code&gt;=&lt;/code&gt; 和 &lt;code&gt;-&lt;/code&gt; 都可以有效果。&lt;/p&gt;
+&lt;p&gt;Atx 形式则是在行首插入 1 到 6 个 &lt;code&gt;#&lt;/code&gt; ，对应到标题 1 到 6 级，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# This is an H1&lt;/span&gt;
+
+&lt;span class="c"&gt;## This is an H2&lt;/span&gt;
+
+&lt;span class="c"&gt;###### This is an H6&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以选择性地「关闭」atx 样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，就可以在行尾加上 &lt;code&gt;#&lt;/code&gt;，而行尾的 &lt;code&gt;#&lt;/code&gt; 数量也不用和开头一样（行首的井字数量决定标题的级别）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# This is an H1 #&lt;/span&gt;
+
+&lt;span class="c"&gt;## This is an H2 ##&lt;/span&gt;
+
+&lt;span class="c"&gt;### This is an H3 ######&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="blockquote"&gt;Blockquotes&lt;/h3&gt;
+
+&lt;p&gt;Markdown 使用 email 形式的区块引言，如果你很熟悉如何在 email 信件中引用，就知道怎么在 Markdown 文档中建立一个区块引言，那会看起来像是强迫断行，然后在每行的最前面加上 &lt;code&gt;&amp;gt;&lt;/code&gt; ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;blockquote&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;paragraphs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;hendrerit&lt;/span&gt; &lt;span class="n"&gt;mi&lt;/span&gt; &lt;span class="n"&gt;posuere&lt;/span&gt; &lt;span class="n"&gt;lectus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Vestibulum&lt;/span&gt; &lt;span class="n"&gt;enim&lt;/span&gt; &lt;span class="n"&gt;wisi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;viverra&lt;/span&gt; &lt;span class="n"&gt;nec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fringilla&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;laoreet&lt;/span&gt; &lt;span class="n"&gt;vitae&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;risus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Donec&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;nisl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;semper&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;velit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Suspendisse&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;sem&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;libero&lt;/span&gt; &lt;span class="n"&gt;luctus&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 也允许只在整个段落的第一行最前面加上 &lt;code&gt;&amp;gt;&lt;/code&gt; ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;blockquote&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;paragraphs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;hendrerit&lt;/span&gt; &lt;span class="n"&gt;mi&lt;/span&gt; &lt;span class="n"&gt;posuere&lt;/span&gt; &lt;span class="n"&gt;lectus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Vestibulum&lt;/span&gt; &lt;span class="n"&gt;enim&lt;/span&gt; &lt;span class="n"&gt;wisi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;viverra&lt;/span&gt; &lt;span class="n"&gt;nec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fringilla&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;laoreet&lt;/span&gt; &lt;span class="n"&gt;vitae&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;risus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Donec&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;nisl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;semper&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;velit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Suspendisse&lt;/span&gt;
+&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;sem&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;libero&lt;/span&gt; &lt;span class="n"&gt;luctus&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;区块引言可以有级别（例如：引言内的引言），只要根据级别加上不同数量的 &lt;code&gt;&amp;gt;&lt;/code&gt; ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;level&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;quoting&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;nested&lt;/span&gt; &lt;span class="n"&gt;blockquote&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Back&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;level&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;引言的区块内也可以使用其他的 Markdown 语法，包括标题、列表、程序代码区块等：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;##&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt;   &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mf"&gt;2.&lt;/span&gt;   &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;second&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Here&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;shell_exec&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;echo $input | $markdown_script&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;任何标准的文本编辑器都能简单地建立 email 样式的引言，例如 BBEdit ，可以选择文字后，从菜单中选择&lt;em&gt;增加引言级别&lt;/em&gt;。&lt;/p&gt;
+&lt;h3 id="list"&gt;列表&lt;/h3&gt;
+
+&lt;p&gt;Markdown 支持有序列表和无序列表。&lt;/p&gt;
+&lt;p&gt;无序列表使用星号、加号或是减号作为列表标记：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Red&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Green&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Blue&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;等同于：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;+&lt;/span&gt;   &lt;span class="n"&gt;Red&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;   &lt;span class="n"&gt;Green&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;   &lt;span class="n"&gt;Blue&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也等同于：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt;   &lt;span class="n"&gt;Red&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;   &lt;span class="n"&gt;Green&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;   &lt;span class="n"&gt;Blue&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;有序列表则使用数字接着一个英文句点：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;  &lt;span class="n"&gt;Bird&lt;/span&gt;
+&lt;span class="mf"&gt;2.&lt;/span&gt;  &lt;span class="n"&gt;McHale&lt;/span&gt;
+&lt;span class="mf"&gt;3.&lt;/span&gt;  &lt;span class="n"&gt;Parish&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;很重要的一点是，在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的 HTML 标记为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Bird&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;McHale&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Parish&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你的列表标记写成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;  &lt;span class="n"&gt;Bird&lt;/span&gt;
+&lt;span class="mf"&gt;1.&lt;/span&gt;  &lt;span class="n"&gt;McHale&lt;/span&gt;
+&lt;span class="mf"&gt;1.&lt;/span&gt;  &lt;span class="n"&gt;Parish&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或甚至是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;Bird&lt;/span&gt;
+&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;McHale&lt;/span&gt;
+&lt;span class="mf"&gt;8.&lt;/span&gt; &lt;span class="n"&gt;Parish&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;都会得到完全相同的 HTML 输出。重点在于，你可以让 Markdown 文档的列表数字和输出的结果相同，或是懒一点，可以完全不用在意数字的正确性。&lt;/p&gt;
+&lt;p&gt;如果使用懒惰的写法，建议第一个项目最好还是从 1. 开始，因为 Markdown 未来可能会支持有序列表的 start 属性。&lt;/p&gt;
+&lt;p&gt;列表项目标记通常是放在最左边，但是其实也可以缩排，最多三个空白，项目标记后面则一定要接着至少一个空白或 tab。&lt;/p&gt;
+&lt;p&gt;要让列表看起来更漂亮，可以把内容用固定的缩排整理好：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+    &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;hendrerit&lt;/span&gt; &lt;span class="n"&gt;mi&lt;/span&gt; &lt;span class="n"&gt;posuere&lt;/span&gt; &lt;span class="n"&gt;lectus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Vestibulum&lt;/span&gt; &lt;span class="n"&gt;enim&lt;/span&gt; &lt;span class="n"&gt;wisi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;viverra&lt;/span&gt; &lt;span class="n"&gt;nec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fringilla&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;laoreet&lt;/span&gt; &lt;span class="n"&gt;vitae&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;risus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Donec&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;nisl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;semper&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;velit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+    &lt;span class="n"&gt;Suspendisse&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;sem&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;libero&lt;/span&gt; &lt;span class="n"&gt;luctus&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是如果你很懒，那也不一定需要：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;hendrerit&lt;/span&gt; &lt;span class="n"&gt;mi&lt;/span&gt; &lt;span class="n"&gt;posuere&lt;/span&gt; &lt;span class="n"&gt;lectus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Vestibulum&lt;/span&gt; &lt;span class="n"&gt;enim&lt;/span&gt; &lt;span class="n"&gt;wisi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="n"&gt;viverra&lt;/span&gt; &lt;span class="n"&gt;nec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fringilla&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;laoreet&lt;/span&gt; &lt;span class="n"&gt;vitae&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;risus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Donec&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;nisl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;semper&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;velit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Suspendisse&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;sem&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;libero&lt;/span&gt; &lt;span class="n"&gt;luctus&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果列表项目间用空行分开， Markdown 会把项目的内容在输出时用 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 
+标签包起来，举例来说：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Bird&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Magic&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会被转换为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Bird&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Magic&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是这个：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Bird&lt;/span&gt;
+
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Magic&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会被转换为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;Bird&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;Magic&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;列表项目可以包含多个段落，每个项目下的段落都必须缩排 4 个空白或是一个 tab ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;  &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;paragraphs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt;
+    &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;hendrerit&lt;/span&gt;
+    &lt;span class="n"&gt;mi&lt;/span&gt; &lt;span class="n"&gt;posuere&lt;/span&gt; &lt;span class="n"&gt;lectus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+    &lt;span class="n"&gt;Vestibulum&lt;/span&gt; &lt;span class="n"&gt;enim&lt;/span&gt; &lt;span class="n"&gt;wisi&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;viverra&lt;/span&gt; &lt;span class="n"&gt;nec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fringilla&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;laoreet&lt;/span&gt;
+    &lt;span class="n"&gt;vitae&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;risus&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Donec&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;nisl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Aliquam&lt;/span&gt; &lt;span class="n"&gt;semper&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt;
+    &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt; &lt;span class="n"&gt;velit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="mf"&gt;2.&lt;/span&gt;  &lt;span class="n"&gt;Suspendisse&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;sem&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;libero&lt;/span&gt; &lt;span class="n"&gt;luctus&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果每行都有缩排，看起来会看好很多，当然，再次地，如果你很懒惰，Markdown 也允许：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt; &lt;span class="n"&gt;paragraphs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+    &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;second&lt;/span&gt; &lt;span class="n"&gt;paragraph&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;re&lt;/span&gt;
+&lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;indent&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt;
+&lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;consectetuer&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;Another&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;same&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果要在列表项目内放进引言，那 &lt;code&gt;&amp;gt;&lt;/code&gt; 就需要缩排：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;blockquote&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;blockquote&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;inside&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果要放程序代码区块的话，该区块就需要缩排&lt;em&gt;两次&lt;/em&gt;，也就是 8 个空白或是两个 tab：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;block&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;goes&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当然，项目列表很可能会不小心产生，像是下面这样的写法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1986.&lt;/span&gt; &lt;span class="n"&gt;What&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;great&lt;/span&gt; &lt;span class="n"&gt;season&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;换句话说，也就是在行首出现&lt;em&gt;数字-句点-空白&lt;/em&gt;，要避免这样的状况，可以在句点前面加上反斜杠。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1986&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;What&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;great&lt;/span&gt; &lt;span class="n"&gt;season&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="precode"&gt;程序代码区块&lt;/h3&gt;
+
+&lt;p&gt;和程序相关的写作或是标签语言原始代码通常会有已经排版好的程序代码区块，通常这些区块我们并不希望它以一般段落文档的方式去排版，而是照原来的样子显示，Markdown 会用 &lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; 和 &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; 标签来把程序代码区块包起来。&lt;/p&gt;
+&lt;p&gt;要在 Markdown 中建立程序代码区块很简单，只要简单地缩排 4 个空白或是 1 个 tab 就可以，例如，下面的输入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;normal&lt;/span&gt; &lt;span class="n"&gt;paragraph&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;block&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 会转换成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a normal paragraph:&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;This is a code block.
+&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这个每行一级的缩排（4 个空白或是 1 个 tab），都会被移除，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Here&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;AppleScript&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;tell&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Foo&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;beep&lt;/span&gt;
+    &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="n"&gt;tell&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会被转换为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Here is an example of AppleScript:&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;tell application &amp;quot;Foo&amp;quot;
+    beep
+end tell
+&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;一个程序代码区块会一直持续到没有缩排的那一行（或是文档结尾）。&lt;/p&gt;
+&lt;p&gt;在程序代码区块里面， &lt;code&gt;&amp;amp;&lt;/code&gt; 、 &lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;gt;&lt;/code&gt; 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始代码，只需要复制贴上，再加上缩排就可以了，剩下的 Markdown 都会帮你处理，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;footer&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="ni"&gt;&amp;amp;copy;&lt;/span&gt; 2004 Foo Corporation
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会被转换为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;div class=&amp;quot;footer&amp;quot;&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;
+    &lt;span class="ni"&gt;&amp;amp;amp;&lt;/span&gt;copy; 2004 Foo Corporation
+&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;/div&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;程序代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文档。&lt;/p&gt;
+&lt;h3 id="hr"&gt;分隔线&lt;/h3&gt;
+
+&lt;p&gt;你可以在一行中用三个或以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号中间插入空白。下面每种写法都可以建立分隔线：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="o"&gt;***&lt;/span&gt;
+
+&lt;span class="o"&gt;*****&lt;/span&gt;
+
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;
+
+&lt;span class="o"&gt;---------------------------------------&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2 id="span"&gt;区段元素&lt;/h2&gt;
+
+&lt;h3 id="link"&gt;链接&lt;/h3&gt;
+
+&lt;p&gt;Markdown 支持两种形式的链接语法： &lt;em&gt;行内&lt;/em&gt;和&lt;em&gt;参考&lt;/em&gt;两种形式。&lt;/p&gt;
+&lt;p&gt;不管是哪一种，链接的文字都是用 [方括号] 来标记。&lt;/p&gt;
+&lt;p&gt;要建立一个行内形式的链接，只要在方块括号后面马上接着括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/ &amp;quot;Title&amp;quot;) inline link.&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.net/) has no title attribute.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会产生：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+an example&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; inline link.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.net/&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;This link&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; has no
+title attribute.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果是要链接到同样主机的资源，可以使用相对路径：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;See&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;About&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;about&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;details&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考形式的链接使用另外一个方括号接在链接文字的括号后面，而在第二个方括号里面要填入用以辨识链接的标签：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="kt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也可以选择性地在两个方括号中间加上空白：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接着，在文档的任意处，可以把这个标签的链接内容定义出来：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/  &amp;quot;Optional Title Here&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;链接定义的形式为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;方括号，里面输入链接的辨识用标签&lt;/li&gt;
+&lt;li&gt;接着一个冒号&lt;/li&gt;
+&lt;li&gt;接着一个以上的空白或 tab&lt;/li&gt;
+&lt;li&gt;接着链接的网址&lt;/li&gt;
+&lt;li&gt;选择性地接着 title 内容，可以用单引号、双引号或是括号包着&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面这三种链接的定义都是相同：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/  &amp;quot;Optional Title Here&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/  &amp;#39;Optional Title Here&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/  (Optional Title Here)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;请注意：&lt;/strong&gt;有一个已知的问题是 Markdown.pl 1.0.1 会忽略单引号包起来的链接 title。&lt;/p&gt;
+&lt;p&gt;链接网址也可以用方括号包起来：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/&amp;gt;  &amp;quot;Optional Title Here&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你也可以把 title 属性放到下一行，也可以加一些缩排，网址太长的话，这样会比较好看：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/longish/path/to/resource/here&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Optional Title Here&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;网址定义只有在产生链接的时候用到，并不会直接出现在文档之中。&lt;/p&gt;
+&lt;p&gt;链接辨识标签可以有字母、数字、空白和标点符号，但是并&lt;em&gt;不&lt;/em&gt;区分大小写，因此下面两个链接是一样的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[link text][a]&lt;/span&gt;
+&lt;span class="k"&gt;[link text][A]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;默认的链接标签&lt;/em&gt;功能让你可以省略指定链接标签，这种情形下，链接标签和链接文字会视为相同，要用默认链接标签只要在链接文字后面加上一个空的方括号，如果要让 "Google" 链接到 google.com，可以简化成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;][]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后定义链接内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//google.com/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;由于链接文字可能包含空白，所以这种简化的标签内也可以包含多个文字：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Visit&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Daring&lt;/span&gt; &lt;span class="n"&gt;Fireball&lt;/span&gt;&lt;span class="p"&gt;][]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后接着定义链接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Daring&lt;/span&gt; &lt;span class="n"&gt;Fireball&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//daringfireball.net/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;链接的定义可以放在文档中的任何一个地方，我比较偏好直接放在链接出现段落的后面，也可以把它放在文档最后面，就像是批注一样。&lt;/p&gt;
+&lt;p&gt;下面是一个参考式链接的范例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;traffic&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Yahoo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;MSN&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;
+
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//google.com/        &amp;quot;Google&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.yahoo.com/  &amp;quot;Yahoo Search&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.msn.com/    &amp;quot;MSN Search&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果改成用链接名称的方式写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;traffic&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;][]&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Yahoo&lt;/span&gt;&lt;span class="p"&gt;][]&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;MSN&lt;/span&gt;&lt;span class="p"&gt;][].&lt;/span&gt;
+
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;google&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//google.com/        &amp;quot;Google&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;yahoo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;  &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.yahoo.com/  &amp;quot;Yahoo Search&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;msn&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;    &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.msn.com/    &amp;quot;MSN Search&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面两种写法都会产生下面的 HTML。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I get 10 times more traffic from &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://google.com/&amp;quot;&lt;/span&gt;
+&lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Google&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Google&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; than from
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://search.yahoo.com/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Yahoo Search&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Yahoo&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+or &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://search.msn.com/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;MSN Search&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;MSN&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下面是用行内形式写的同样一段内容的 Markdown 文档，提供作为比较之用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;traffic&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//google.com/ &amp;quot;Google&amp;quot;)&lt;/span&gt;
+&lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Yahoo&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.yahoo.com/ &amp;quot;Yahoo Search&amp;quot;) or&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;MSN&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.msn.com/ &amp;quot;MSN Search&amp;quot;).&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考式的链接其实重点不在于它比较好写，而是它比较好读，比较一下上面的范例，使用参考式的文章本身只有 81 个字符，但是用行内形式的链接却会增加到 176 个字符，如果是用纯 HTML 格式来写，会有 234 个字符，在 HTML 格式中，标签比文字还要多。&lt;/p&gt;
+&lt;p&gt;使用 Markdown 的参考式链接，可以让文档更像是浏览器最后产生的结果，把一些标记相关的信息移到段落文字之外，这样增加链接，文章的阅读感也不会被打断。&lt;/p&gt;
+&lt;h3 id="em"&gt;强调&lt;/h3&gt;
+
+&lt;p&gt;Markdown 使用星号（&lt;code&gt;*&lt;/code&gt;）和底线（&lt;code&gt;_&lt;/code&gt;）作为标记强调字词的符号，被 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 包围的字词会被转成用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签包围，用两个 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 包起来的话，则会被转成 &lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;single&lt;/span&gt; &lt;span class="n"&gt;asterisks&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="n"&gt;_single&lt;/span&gt; &lt;span class="n"&gt;underscores_&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;asterisks&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;
+
+&lt;span class="n"&gt;__double&lt;/span&gt; &lt;span class="n"&gt;underscores__&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会转成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;em&amp;gt;&lt;/span&gt;single asterisks&lt;span class="nt"&gt;&amp;lt;/em&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;em&amp;gt;&lt;/span&gt;single underscores&lt;span class="nt"&gt;&amp;lt;/em&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;double asterisks&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;double underscores&lt;span class="nt"&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你可以随便用你喜欢的样式，唯一的限制是，用什么符号开启标签，就要用什么符号结束。&lt;/p&gt;
+&lt;p&gt;强调也可以直接差在文字中间：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;un&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;frigging&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;believable&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是如果 &lt;code&gt;*&lt;/code&gt; 和 &lt;code&gt;_&lt;/code&gt; 两边都有空白的话，它们就只会被当成普通的符号。&lt;/p&gt;
+&lt;p&gt;如果要在文字前后直接插入普通的星号或底线，可以用反斜杠：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;surrounded&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;literal&lt;/span&gt; &lt;span class="n"&gt;asterisks&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="code"&gt;程序代码&lt;/h3&gt;
+
+&lt;p&gt;如果要标记一小段行内程序代码，可以用反引号把它包起来（&lt;code&gt;`&lt;/code&gt;），例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;Use&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会产生：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Use the &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;printf()&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; function.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果要在程序代码区段内插入反引号，可以用多个反引号来开启和结束程序代码区段：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;``&lt;/span&gt;&lt;span class="n"&gt;There&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;literal&lt;/span&gt; &lt;span class="n"&gt;backtick&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;``&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这段语法会产生：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;There is a literal backtick (`) here.&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;程序代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样就可以在区段的一开始就插入反引号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;single&lt;/span&gt; &lt;span class="n"&gt;backtick&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;``&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="err"&gt;``&lt;/span&gt;
+
+&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;backtick&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;delimited&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;``&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="err"&gt;``&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会产生：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;A single backtick in a code span: &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;`&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;A backtick-delimited string in a code span: &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;`foo`&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在程序代码区段内，&lt;code&gt;&amp;amp;&lt;/code&gt; 和方括号都会被转成 HTML 实体，这样会比较容易插入 HTML 原始代码，Markdown 会把下面这段：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;Please&lt;/span&gt; &lt;span class="nx"&gt;don&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t use any `&amp;lt;blink&amp;gt;` tags.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;转为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Please don&amp;#39;t use any &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;blink&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; tags.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也可以这样写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;8212&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;decimal&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;encoded&lt;/span&gt; &lt;span class="n"&gt;equivalent&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;mdash&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以产生：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;amp;&lt;/span&gt;#8212;&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; is the decimal-encoded
+equivalent of &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;amp;&lt;/span&gt;mdash;&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="img"&gt;图片&lt;/h3&gt;
+
+&lt;p&gt;很明显地，要在纯文本应用中设计一个 「自然」的语法来插入图片是有一定难度的。&lt;/p&gt;
+&lt;p&gt;Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： &lt;em&gt;行内&lt;/em&gt;和&lt;em&gt;参考&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;行内图片的语法看起来像是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Alt&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Alt&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Optional title&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;详细叙述如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个惊叹号 &lt;code&gt;!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;接着一个方括号，里面放上图片的替换文字&lt;/li&gt;
+&lt;li&gt;接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上
+    选择性的 'title' 文字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考式的图片语法则长得像这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Alt&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="kt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;「id」是图片参考的名称，图片参考的定义方式则和链接参考一样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;  &lt;span class="s"&gt;&amp;quot;Optional title attribute&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;到目前为止， Markdown 还没有办法指定图片的宽高，如果需要的话，可以使用普通的 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="misc"&gt;其它&lt;/h2&gt;
+
+&lt;h3 id="autolink"&gt;自动链接&lt;/h3&gt;
+
+&lt;p&gt;Markdown 支持比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来， Markdown 就会自动把它转成链接，链接的文字就和链接位置一样，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 会转为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;http://example.com/&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;自动的邮件链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以混淆一些不好的信箱地址收集机器人，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;address&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 会转成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;amp;#x6D;&amp;amp;#x61;i&amp;amp;#x6C;&amp;amp;#x74;&amp;amp;#x6F;:&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&lt;/span&gt;
+&lt;span class="s"&gt;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&lt;/span&gt;
+&lt;span class="s"&gt;&amp;amp;#109;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;&lt;/span&gt;
+&lt;span class="ni"&gt;&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;&lt;/span&gt;e&lt;span class="ni"&gt;&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在浏览器里面，这段字符串会变成一个可以点击的「address@example.com」链接。&lt;/p&gt;
+&lt;p&gt;（这种作法虽然可以混淆不少的机器人，但并无法全部挡下来，不过这样也比什么都不做好些。无论如何，公开你的信箱终究会引来广告信件的。）&lt;/p&gt;
+&lt;h3 id="backslash"&gt;转义字符&lt;/h3&gt;
+
+&lt;p&gt;Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果想要用星号加在文字旁边的方式来做出强调效果（但不用 &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 标签），可以在星号的前面加上反斜杠：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;literal&lt;/span&gt; &lt;span class="n"&gt;asterisks&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Markdown 支持在下面这些符号前面加上反斜杠来帮助插入普通的符号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;\&lt;/span&gt;   &lt;span class="err"&gt;反斜杠&lt;/span&gt;
+&lt;span class="err"&gt;`&lt;/span&gt;   &lt;span class="err"&gt;反引号&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt;   &lt;span class="err"&gt;星号&lt;/span&gt;
+&lt;span class="n"&gt;_&lt;/span&gt;   &lt;span class="err"&gt;底线&lt;/span&gt;
+&lt;span class="p"&gt;{}&lt;/span&gt;  &lt;span class="err"&gt;大括号&lt;/span&gt;
+&lt;span class="p"&gt;[]&lt;/span&gt;  &lt;span class="err"&gt;方括号&lt;/span&gt;
+&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="err"&gt;括号&lt;/span&gt;
+&lt;span class="cp"&gt;#   井字号&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;   &lt;span class="err"&gt;加号&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;   &lt;span class="err"&gt;减号&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;   &lt;span class="err"&gt;英文句点&lt;/span&gt;
+&lt;span class="o"&gt;!&lt;/span&gt;   &lt;span class="err"&gt;惊叹号&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="acknowledgement"&gt;感谢&lt;/h2&gt;
+
+&lt;p&gt;感谢 &lt;a href="https://twitter.com/#!/leafy7382"&gt;leafy7382&lt;/a&gt; 协助翻译，&lt;a href="http://iamhlb.com/"&gt;hlb&lt;/a&gt;、&lt;a href="http://twitter.com/randylien"&gt;Randylien&lt;/a&gt; 帮忙润稿，&lt;a href="https://twitter.com/#!/ethantw"&gt;ethantw&lt;/a&gt; 的&lt;a href="http://ethantw.net/projects/han/"&gt;汉字标准格式・CSS Reset&lt;/a&gt;， &lt;a href="http://kidwm.net/"&gt;WM&lt;/a&gt; 回报文字错误。&lt;/p&gt;</summary><category term="Markdown"></category></entry><entry><title>Markdown 一分钟快速入门</title><link href="http://yushanak.github.io/markdown-quickly-start.html" rel="alternate"></link><updated>2011-09-18T00:00:00+08:00</updated><author><name>Shan</name></author><id>tag:yushanak.github.io,2011-09-18:markdown-quickly-start.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;声明：&lt;/strong&gt; 本文来源于对&lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown官方&lt;/a&gt;文档学习过程中的总结，在此记录，是为了方便自己快速查阅，同时也希望提供markdown初学者快速起步的便利。&lt;/p&gt;
+&lt;h2&gt;概述&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;哲学&lt;/li&gt;
+&lt;li&gt;行内 HTML&lt;/li&gt;
+&lt;li&gt;特殊字符自动转换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Markdown 是一套书写 &lt;em&gt;标记&lt;/em&gt; 规则，目标是为了快速书写用于网络发表的文档。标记语法来源于电子邮件，非常接近纯文本，所以便于阅读。发布时需要 Markdown 转换工具将文档转换为 Html 或者其他格式。&lt;/p&gt;
+&lt;p&gt;Markdown 区别于 Html 的是：markdown 偏向于写作而 html 偏向于发布，所以markdown的源文件很好阅读，但表现力者弱于html。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;语法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;块元素&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;段落和换行&lt;/li&gt;
+&lt;li&gt;标题&lt;/li&gt;
+&lt;li&gt;区块引言&lt;/li&gt;
+&lt;li&gt;列表&lt;/li&gt;
+&lt;li&gt;程序代码区块&lt;/li&gt;
+&lt;li&gt;分隔线&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;段元素&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;链接&lt;/li&gt;
+&lt;li&gt;强调&lt;/li&gt;
+&lt;li&gt;程序代码&lt;/li&gt;
+&lt;li&gt;图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其它&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;转义字符&lt;/li&gt;
+&lt;li&gt;自动链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;段落&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;加入一个空行：&lt;/strong&gt;一段连续的文字构成一个段落，段落与段落之间的划分是通过 &lt;em&gt;在段落间加入一个空行&lt;/em&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;句尾加两个空格再回车：&lt;/strong&gt;一个段落中间 markdown 是不会在句尾回车后自动断行，要想强制断行就需要 &lt;em&gt;在句尾加两个空格再回车&lt;/em&gt; 。&lt;/p&gt;
+&lt;h3&gt;列表&lt;/h3&gt;
+&lt;p&gt;无序列表使用星号 &lt;code&gt;*&lt;/code&gt;、加号 &lt;code&gt;+&lt;/code&gt; 和减号 &lt;code&gt;-&lt;/code&gt; 来做为列表的项目标记，这些符号是都可以使用的，使用星号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Candy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Gum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Booze&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;加号：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Candy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Gum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Booze&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;和减号&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Candy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Gum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Booze&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;都会输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Candy.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Gum.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Booze.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;有序的列表则是使用一般的数字接着一个英文句点作为项目标记，这个数字是多少不会影响实际html输出效果。比如你可以按1、2、3排也可以3、2、1甚至1、1、1输出结果都是一样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;Red&lt;/span&gt;
+&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;Green&lt;/span&gt;
+&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;Blue&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Red&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Green&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Blue&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你在项目之间插入空行，那项目的内容会用 &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 包起来，你也可以在一个项目内放上多个段落，只要在它前面缩排 4 个空白或 1 个 tab 。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+    &lt;span class="n"&gt;With&lt;/span&gt; &lt;span class="n"&gt;multiple&lt;/span&gt; &lt;span class="n"&gt;paragraphs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Another&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;A list item.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;With multiple paragraphs.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;Another item in the list.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;链接&lt;/h3&gt;
+&lt;p&gt;Markdown 支援两种形式的链接语法： &lt;em&gt;行内&lt;/em&gt; 和 &lt;em&gt;参考&lt;/em&gt; 两种形式，两种都是使用角括号来把文字转成连结。&lt;/p&gt;
+&lt;p&gt;行内形式是直接在后面用括号直接接上链接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/).&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is an &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+example link&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你也可以选择性的加上 title 属性：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/ &amp;quot;With a Title&amp;quot;).&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is an &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.com/&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;With a Title&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+example link&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考形式的链接让你可以为链接定一个名称，之后你可以在文件的其他地方定义该链接的内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="n"&gt;times&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;traffic&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Yahoo&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;MSN&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//google.com/ &amp;quot;Google&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.yahoo.com/ &amp;quot;Yahoo Search&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//search.msn.com/ &amp;quot;MSN Search&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I get 10 times more traffic from &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://google.com/&amp;quot;&lt;/span&gt;
+&lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Google&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Google&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; than from &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://search.yahoo.com/&amp;quot;&lt;/span&gt;
+&lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Yahoo Search&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Yahoo&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; or &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://search.msn.com/&amp;quot;&lt;/span&gt;
+&lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;MSN Search&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;MSN&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;title 属性是选择性的，链接名称可以用字母、数字和空格，但是不分大小写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="n"&gt;morning&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;coffee&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;New&lt;/span&gt; &lt;span class="n"&gt;York&lt;/span&gt; &lt;span class="n"&gt;Times&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;NY&lt;/span&gt; &lt;span class="n"&gt;Times&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ny&lt;/span&gt; &lt;span class="n"&gt;times&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.nytimes.com/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I start my morning with a cup of coffee and&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.nytimes.com/&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;The New York Times&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;图片&lt;/h3&gt;
+&lt;p&gt;图片的语法和链接很像。&lt;/p&gt;
+&lt;p&gt;行内形式（title 是选择性的）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;alt&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考形式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;alt&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="kt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面两种方法都会输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/path/to/img.jpg&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;alt text&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;代码&lt;/h3&gt;
+&lt;p&gt;在一般的段落文字中，你可以使用反引号 &lt;code&gt;`&lt;/code&gt; 来标记代码区段，区段内的 &lt;code&gt;&amp;amp;&lt;/code&gt;、&lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;gt;&lt;/code&gt; 都会被自动的转换成 HTML 实体，这项特性让你可以很容易的在代码区段内插入 HTML 码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;I&lt;/span&gt; &lt;span class="nx"&gt;strongly&lt;/span&gt; &lt;span class="nx"&gt;recommend&lt;/span&gt; &lt;span class="nx"&gt;against&lt;/span&gt; &lt;span class="nx"&gt;using&lt;/span&gt; &lt;span class="nb"&gt;any&lt;/span&gt; &lt;span class="sb"&gt;`&amp;lt;blink&amp;gt;`&lt;/span&gt; &lt;span class="nx"&gt;tags.&lt;/span&gt;
+
+&lt;span class="nx"&gt;I&lt;/span&gt; &lt;span class="nx"&gt;wish&lt;/span&gt; &lt;span class="nx"&gt;SmartyPants&lt;/span&gt; &lt;span class="nx"&gt;used&lt;/span&gt; &lt;span class="nb"&gt;named&lt;/span&gt; &lt;span class="nb"&gt;entities&lt;/span&gt; &lt;span class="nx"&gt;like&lt;/span&gt; &lt;span class="sb"&gt;`&amp;amp;mdash;`&lt;/span&gt;
+&lt;span class="nx"&gt;instead&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="kt"&gt;decimal&lt;/span&gt;&lt;span class="na"&gt;-encoded&lt;/span&gt; &lt;span class="nx"&gt;entites&lt;/span&gt; &lt;span class="nx"&gt;like&lt;/span&gt; &lt;span class="sb"&gt;`&amp;amp;#8212;`&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I strongly recommend against using any
+&lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;blink&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; tags.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I wish SmartyPants used named entities like
+&lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;amp;&lt;/span&gt;mdash;&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; instead of decimal-encoded
+entites like &lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;amp;&lt;/span&gt;#8212;&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果要建立一个已经格式化好的代码区块，只要每行都缩进 4 个空格或是一个 tab 就可以了，而 &lt;code&gt;&amp;amp;&lt;/code&gt;、&lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;gt;&lt;/code&gt; 也一样会自动转成 HTML 实体。&lt;/p&gt;
+&lt;p&gt;Markdown 语法:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="nx"&gt;you&lt;/span&gt; &lt;span class="nx"&gt;want&lt;/span&gt; &lt;span class="nx"&gt;your&lt;/span&gt; &lt;span class="nx"&gt;page&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;validate&lt;/span&gt; &lt;span class="nx"&gt;under&lt;/span&gt; &lt;span class="nb"&gt;XHTML&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="nx"&gt;Strict&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="nx"&gt;you&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ve got to put paragraph tags in your blockquotes:&lt;/span&gt;
+
+&lt;span class="s1"&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;p&amp;gt;For example.&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出 HTML 为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If you want your page to validate under XHTML 1.0 Strict,
+you&amp;#39;ve got to put paragraph tags in your blockquotes:&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;blockquote&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;
+&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;p&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;For example.&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;/p&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;
+&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;/blockquote&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="markdown"></category></entry></feed>

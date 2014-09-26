@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+>
+<head>
+    <title>Tools - 廋虎</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+    <meta name="author" content="Shan" />
+    <meta name="keywords" content="Tools" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="廋虎" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="廋虎"/>
+        <meta property="og:url" content="http://yushanak.github.io"/>
+        <meta property="og:description" content="廋虎"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://yushanak.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://yushanak.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://yushanak.github.io/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yushanak.github.io/theme/css/style.css" type="text/css"/>
+
+        <link href="http://yushanak.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="廋虎 ATOM Feed"/>
+
+    <style>
+        #back-to-top {position: fixed;  bottom: 20%; left: 90%; }
+
+        #back-to-top a  { background-image: url(http://yushanak.github.io/theme/img/tops.png);  background-repeat: no-repeat;  background-position: -37px 0; display: block;height: 37px; width: 37px;}
+
+        #back-to-top a:hover  {background-position: 0 0;  }
+    </style>
+
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://yushanak.github.io/" class="navbar-brand">
+廋虎            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                        <li >
+                            <a href="http://yushanak.github.io/category/database.html">Database</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/qian-duan-ji-zhu.html">前端技术</a>
+                        </li>
+                        <li class="active">
+                            <a href="http://yushanak.github.io/category/tools.html">Tools</a>
+                        </li>
+                         <li><a href="http://yushanak.github.io/pages/about.html">
+                             About
+                          </a></li>
+                <li><a href="http://yushanak.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">文章归档</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+            <article>
+                <h2><a href="http://yushanak.github.io/pelican-blog.html">我的博客正式在 GitHub 安家</a></h2>
+                <div class="summary"><h3>醒悟</h3>
+<hr />
+<h3>Geek是什么</h3>
+<p>Geek更多的是一种精神，一种态度，一种对技术的理解与信念。他们无法忍受丑陋的代码，拙劣的技术。他们思路开阔，技术娴熟，他们不甘平庸，追求完美。他们不会囿于常识，他们敢于突破。在常人眼中，他们不走寻常路，享受各种非主流的技术。但在他们自己眼中，这些又是那么得自然与优美。他们用自己的行为诠释着自己对于技术的理解，用那份固执传达着自己的信念。</p>
+<p>他们掌握并热爱着技术，叛逆、执着，崇尚自由。</p>
+<h3>为什么不选择CSDN、Wordpress、Jekyll等技术</h3>
+<p>CSDN上发表博文虽然方便，但没有归属感，自己的博客还是应该自己做主。</p>
+<p>Wordpress上手容易、功能强大、插件丰富。但是在我看来，这些优点同时也是它的缺点：太笨重、太无脑、不够酷、无用功能太多、可定制的粒度不够小。我更喜欢简洁快速粗暴的博客系统。</p>
+<p>Jekyll非常棒，可惜它基于Ruby。对于Python爱好者而言，基于Python的Pelican显然更加可口。</p>
+<h3>探寻</h3>
+<hr />
+<p>我在搭建这个博客的过程中学到了很多很多有意思的技术。</p>
+<p>搭建环境为 Linux，Windows下可能会麻烦一些 ...</p>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/pelican-blog.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://yushanak.github.io/create-themes-for-Pelican.html">设计你自己的 Pelican 主题</a></h2>
+                <div class="summary"><p>pelican 使用 jinja2 模板引擎来提供博客主题的渲染和输出 html，jinja2 的语法很简单。如果你想创建自己的主题模板，先从简单的默认主题获取灵感吧。</p>
+<h2>项目结构</h2>
+<p>一个主题项目必须包括下面的目录结构：</p>
+<div class="highlight"><pre>    <span class="err">├──</span> <span class="k">static</span>
+    <span class="err">│</span>   <span class="err">├──</span> <span class="n">css</span>
+    <span class="err">│</span>   <span class="err">└──</span> <span class="n">images</span>
+    <span class="err">└──</span> <span class="n">templates</span>
+        <span class="err">├──</span> <span class="n">archives</span><span class="p">.</span><span class="n">html</span>         <span class="c1">// to display archives</span>
+        <span class="err">├──</span> <span class="n">period_archives</span><span class="p">.</span><span class="n">html</span>  <span class="c1">// to display time-period archives</span>
+        <span class="err">├──</span> <span class="n">article</span><span class="p">.</span><span class="n">html</span>          <span class="c1">// processed for each article</span>
+        <span class="err">├──</span> <span class="n">author</span><span class="p">.</span><span class="n">html</span>           <span class="c1">// processed for each author</span>
+        <span class="err">├──</span> <span class="n">authors</span><span class="p">.</span><span class="n">html</span>          <span class="c1">// must list all the authors</span>
+        <span class="err">├──</span> <span class="n">categories</span><span class="p">.</span><span class="n">html</span>       <span class="c1">// must list all ...</span></pre></div>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/create-themes-for-Pelican.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://yushanak.github.io/markdown-syntax.html">【网摘】Markdown 语法说明 (简体中文版)</a></h2>
+                <div class="summary"><ul>
+<li><a href="#overview">概述</a><ul>
+<li><a href="#philosophy">哲学</a></li>
+<li><a href="#html">行内 HTML</a></li>
+<li><a href="#autoescape">特殊字符自动转换</a></li>
+</ul>
+</li>
+<li><a href="#block">区块元素</a><ul>
+<li><a href="#p">段落和换行</a></li>
+<li><a href="#header">标题</a></li>
+<li><a href="#blockquote">区块引言</a></li>
+<li><a href="#list">列表</a></li>
+<li><a href="#precode">程序代码区块</a></li>
+<li><a href="#hr">分隔线</a></li>
+</ul>
+</li>
+<li><a href="#span">区段元素</a><ul>
+<li><a href="#link">链接</a></li>
+<li><a href="#em">强调</a></li>
+<li><a href="#code">程序代码</a></li>
+<li><a href="#img">图片</a></li>
+</ul>
+</li>
+<li><a href="#misc">其它</a><ul>
+<li><a href="#backslash">转义字符</a></li>
+<li><a href="#autolink">自动链接</a></li>
+</ul>
+</li>
+<li><a href="#acknowledgement">感谢</a></li>
+</ul>
+<p><strong>注意：</strong>这份文档来自网络，是我目前找到的比较好的关于Markdown 语法的文档。这份文档同时也是用 Markdown 写的，你可以看看附件中的原始文档 。</p>
+<hr />
+<h2 id="overview">概述</h2>
+
+<h3 id="philosophy">哲学</h3>
+
+<p>Markdown 的目标是实现「易读易写」。</p>
+<p>不过最需要强调的便是它的可读性。一份使用 Markdown 格式撰写的文档应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 <a href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a>、<a href="http://www.aaronsw.com/2002/atx/">atx</a>、<a href="http://textism.com/tools/textile/">Textile</a>、<a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>、<a href="http://www.triptico.com/software/grutatxt.html">Grutatext</a> 和 ...</p>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/markdown-syntax.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="http://yushanak.github.io/markdown-quickly-start.html">Markdown 一分钟快速入门</a></h2>
+                <div class="summary"><p><strong>声明：</strong> 本文来源于对<a href="http://daringfireball.net/projects/markdown/">Markdown官方</a>文档学习过程中的总结，在此记录，是为了方便自己快速查阅，同时也希望提供markdown初学者快速起步的便利。</p>
+<h2>概述</h2>
+<ul>
+<li>哲学</li>
+<li>行内 HTML</li>
+<li>特殊字符自动转换</li>
+</ul>
+<p>Markdown 是一套书写 <em>标记</em> 规则，目标是为了快速书写用于网络发表的文档。标记语法来源于电子邮件，非常接近纯文本，所以便于阅读。发布时需要 Markdown 转换工具将文档转换为 Html 或者其他格式。</p>
+<p>Markdown 区别于 Html 的是：markdown 偏向于写作而 html 偏向于发布，所以markdown的源文件很好阅读，但表现力者弱于html。</p>
+<hr />
+<h2>语法</h2>
+<ul>
+<li>
+<p>块元素</p>
+<ul>
+<li>段落和换行</li>
+<li>标题</li>
+<li>区块引言</li>
+<li>列表</li>
+<li>程序代码区块</li>
+<li>分隔线</li>
+</ul>
+</li>
+<li>
+<p>段元素</p>
+<ul>
+<li>链接</li>
+<li>强调</li>
+<li>程序代码</li>
+<li>图片</li>
+</ul>
+</li>
+<li>
+<p>其它</p>
+<ul>
+<li>转义字符 ...</li></ul></li></ul>
+                    <a class="btn btn-info btn-xs" href="http://yushanak.github.io/markdown-quickly-start.html">更多内容 &raquo;&raquo;</a>
+                </div>
+            </article>
+            <hr/>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">足迹</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/yushanak"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                    <li class="list-group-item"><a href="http://www.douban.com/people/YuShanAK/"><i class="fa fa-豆瓣-square fa-lg"></i> 豆瓣</a></li>
+                    <li class="list-group-item"><a href="http://www.zhihu.com/people/shan-yu-65"><i class="fa fa-知乎-square fa-lg"></i> 知乎</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="http://yushanak.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">标签云</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://yushanak.github.io/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://yushanak.github.io/tag/pelican.html">
+                                pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://yushanak.github.io/tag/markdown.html">
+                                Markdown
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/github.html">
+                                github
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/jinjia2.html">
+                                Jinjia2
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/oop.html">
+                                OOP
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/postgresql.html">
+                                postgresql
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/resource.html">
+                                resource
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/html.html">
+                                Html
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">参考</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://docs.getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://docs.python.org/2.7/" target="_blank">
+                Python
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docs.jinkan.org/docs/jinja2/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://www.google.com/ncr" target="_blank">
+                Google
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+
+<p id="back-to-top" ><a  title=""></a></p>
+
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Shan
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+      </div>
+   </div>
+</footer>
+<script src="http://yushanak.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://yushanak.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://yushanak.github.io/theme/js/respond.min.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(function () {$("#back-to-top").hide(); $(function () {$(window).scroll(function () {if ($(window).scrollTop() > 500) {$("#back-to-top").fadeIn();}else {$("#back-to-top").fadeOut();}});$("#back-to-top").click(function () {$('body,html').animate({scrollTop: 0}, 500);return false;});});});
+</script>
+
+</body>
+</html>

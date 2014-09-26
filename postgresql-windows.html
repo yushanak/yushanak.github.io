@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+>
+<head>
+    <title>Win7 安装 PostgreSQL Postgis 记录 - 廋虎</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://yushanak.github.io/postgresql-windows.html">
+
+        <meta name="author" content="Shan" />
+        <meta name="keywords" content="postgresql" />
+        <meta name="description" content="软件说明： postgresql-9.3.3-1-windows-binaries 自解压版本，没有选择 exe 安装版本；操作系统 win7 64位，postgis-pg93-setup-2.1.exe； 下载 postgresql-9.3.3-1-windows-binaries 自解压版本 首先解压postgresql：解压到你想要的安装目录，主要最好不要有中文或者空格，我的目录是 e:\application; 初始化数据库：开始-》dos窗口，cd到你的解压目录bin文件夹下，会自动创建postgres数据库，执行下面命令： e:\Application\pgsql\bin&gt;initdb.exe -D e:\Application\pgsql\data -E UTF8 --locale=C -D 设置数据文件目录，-E,数据库编码 ..." />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://yushanak.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://yushanak.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://yushanak.github.io/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yushanak.github.io/theme/css/style.css" type="text/css"/>
+
+        <link href="http://yushanak.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="廋虎 ATOM Feed"/>
+
+    <style>
+        #back-to-top {position: fixed;  bottom: 20%; left: 90%; }
+
+        #back-to-top a  { background-image: url(http://yushanak.github.io/theme/img/tops.png);  background-repeat: no-repeat;  background-position: -37px 0; display: block;height: 37px; width: 37px;}
+
+        #back-to-top a:hover  {background-position: 0 0;  }
+    </style>
+
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://yushanak.github.io/" class="navbar-brand">
+廋虎            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="http://yushanak.github.io/category/database.html">Database</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/qian-duan-ji-zhu.html">前端技术</a>
+                        </li>
+                        <li >
+                            <a href="http://yushanak.github.io/category/tools.html">Tools</a>
+                        </li>
+                         <li><a href="http://yushanak.github.io/pages/about.html">
+                             About
+                          </a></li>
+                <li><a href="http://yushanak.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">文章归档</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://yushanak.github.io/postgresql-windows.html"
+                       rel="bookmark"
+                       title="Permalink to Win7 安装 PostgreSQL Postgis 记录">
+                        Win7 安装 PostgreSQL Postgis 记录
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-success">发表日期：</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-03-07T22:30:00"> 2014-03-07</time>
+    </span>
+
+
+
+<span class="label label-success">标签：</span>
+	<a href="http://yushanak.github.io/tag/postgresql.html">postgresql</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p><strong>软件说明：</strong> postgresql-9.3.3-1-windows-binaries 自解压版本，没有选择 exe 安装版本；操作系统 win7 64位，postgis-pg93-setup-2.1.exe；</p>
+<hr />
+<ol>
+<li>
+<p>下载 postgresql-9.3.3-1-windows-binaries 自解压版本</p>
+</li>
+<li>
+<p>首先解压postgresql：解压到你想要的安装目录，主要最好不要有中文或者空格，我的目录是</p>
+<div class="highlight"><pre><span class="nl">e:</span><span class="err">\</span><span class="n">application</span><span class="p">;</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>初始化数据库：开始-》dos窗口，cd到你的解压目录bin文件夹下，会自动创建postgres数据库，执行下面命令：</p>
+<div class="highlight"><pre><span class="nl">e:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">initdb</span><span class="p">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">D</span> <span class="n">e</span><span class="o">:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">data</span> <span class="o">-</span><span class="n">E</span> <span class="n">UTF8</span> <span class="o">--</span><span class="n">locale</span><span class="o">=</span><span class="n">C</span>
+</pre></div>
+
+
+<p>-D 设置数据文件目录，-E,数据库编码；</p>
+</li>
+<li>
+<p>启动数据库：两种方式，一是注册为windows服务，具体操作为：</p>
+<div class="highlight"><pre>    <span class="nl">e:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">pg_ctl</span><span class="p">.</span><span class="n">exe</span> <span class="k">register</span> <span class="o">-</span><span class="n">D</span> <span class="n">E</span><span class="o">:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">data</span> <span class="o">-</span><span class="n">Npgsql</span>
+</pre></div>
+
+
+<p>-N表示windows服务名称为pgsql；</p>
+<div class="highlight"><pre><span class="nl">e:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">net</span> <span class="n">start</span> <span class="n">pgsql</span>
+</pre></div>
+
+
+<p>如果你的安装没有错误，现在就应该可以起来了。<br />
+二是直接启动，具体操作为：</p>
+<div class="highlight"><pre><span class="nl">e:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">pg_ctl</span><span class="p">.</span><span class="n">exe</span> <span class="n">start</span> <span class="o">-</span><span class="n">w</span> <span class="o">-</span><span class="n">D</span> <span class="n">E</span><span class="o">:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">data</span>
+</pre></div>
+
+
+<ol>
+<li>
+<p>卸载服务：</p>
+<p>e:\Application\pgsql\bin&gt;pg_ctl.exe unregister -D d:\Application\pgsql\data -Npgsql</p>
+</li>
+</ol>
+</li>
+<li>
+<p>创建数据库：</p>
+<div class="highlight"><pre><span class="nl">e:</span><span class="err">\</span><span class="n">Application</span><span class="err">\</span><span class="n">pgsql</span><span class="err">\</span><span class="n">bin</span><span class="o">&gt;</span><span class="n">createdb</span><span class="p">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">E</span> <span class="n">UTF8</span> <span class="n">testdb</span>
+</pre></div>
+
+
+<ol>
+<li>
+<p>创建用户：</p>
+<p>e:\Application\pgsql\bin&gt;createuser.exe postgre
+会有是否创建superuser的选项，创建一个名为postgre的超级用户；
+8. 修改用户密码：</p>
+<p>e:\Application\pgsql\bin&gt;psql.exe postgres</p>
+<p>psql (8.4.2)
+Type "help" for help.
+postgres=# alter user postgre with password 'postgre'
+postgres-#
+第二种方式为使用pgAdmin修改，具体就不演示了，用pgAdmin连接到服务器，可以直接修改密码；
+9. 安装postgis：
+双击安装文件，选择postgre的安装目录，这个地方我搞错了，一开始以为是postgis的安装目录，其实不是，是选择postgre的目录，也就是你解压的目录才对，填写超级用户名称和密码，一路next下去，安装成功。</p>
+</li>
+</ol>
+</li>
+</ol>
+            </div>
+            <!-- /.entry-content -->
+
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>留言和评论：</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" 
+        data-thread-key="postgresql-windows" 
+        data-title="Win7 安装 PostgreSQL Postgis 记录" 
+        data-url="http://yushanak.github.io/postgresql-windows.html"
+    ></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"localhostyushan"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+        <noscript>请开启浏览器的 JavaScript 查看评论 </noscript>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">足迹</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/yushanak"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                    <li class="list-group-item"><a href="http://www.douban.com/people/YuShanAK/"><i class="fa fa-豆瓣-square fa-lg"></i> 豆瓣</a></li>
+                    <li class="list-group-item"><a href="http://www.zhihu.com/people/shan-yu-65"><i class="fa fa-知乎-square fa-lg"></i> 知乎</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="http://yushanak.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">标签云</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://yushanak.github.io/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://yushanak.github.io/tag/pelican.html">
+                                pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="http://yushanak.github.io/tag/markdown.html">
+                                Markdown
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/github.html">
+                                github
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/jinjia2.html">
+                                Jinjia2
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/oop.html">
+                                OOP
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/postgresql.html">
+                                postgresql
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/resource.html">
+                                resource
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://yushanak.github.io/tag/html.html">
+                                Html
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">参考</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://docs.getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://docs.python.org/2.7/" target="_blank">
+                Python
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docs.jinkan.org/docs/jinja2/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://www.google.com/ncr" target="_blank">
+                Google
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+
+<p id="back-to-top" ><a  title=""></a></p>
+
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 Shan
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+      </div>
+   </div>
+</footer>
+<script src="http://yushanak.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://yushanak.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://yushanak.github.io/theme/js/respond.min.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(function () {$("#back-to-top").hide(); $(function () {$(window).scroll(function () {if ($(window).scrollTop() > 500) {$("#back-to-top").fadeIn();}else {$("#back-to-top").fadeOut();}});$("#back-to-top").click(function () {$('body,html').animate({scrollTop: 0}, 500);return false;});});});
+</script>
+
+</body>
+</html>
